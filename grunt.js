@@ -2,6 +2,7 @@
 module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Project configuration.
     grunt.initConfig({
@@ -59,10 +60,17 @@ module.exports = function (grunt) {
                     'target/server/data.js': ['lib/server/data.coffee']
                 }
             }
+        },
+        copy:{
+            target:{
+                files:{
+                    'target/client/': ['lib/client/*.html']
+                }
+            }
         }
     });
 
     // Default task.
-    grunt.registerTask('default', 'coffee');
+    grunt.registerTask('default', 'copy coffee');
 
 };
