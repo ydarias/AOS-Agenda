@@ -3,6 +3,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-less');
 
     // Project configuration.
     grunt.initConfig({
@@ -68,10 +69,17 @@ module.exports = function (grunt) {
                     'target/client/': ['lib/client/*.html']
                 }
             }
+        },
+        less: {
+            production: {
+                files: {
+                    "target/client/styles.css": "lib/client/styles.less"
+                }
+            }
         }
     });
 
     // Default task.
-    grunt.registerTask('default', 'copy coffee');
+    grunt.registerTask('default', 'copy coffee less');
 
 };
