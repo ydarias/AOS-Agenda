@@ -1,14 +1,42 @@
+/* Reset navigator elements */
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Custom styles */
+
 @default-height: 48px;
 @default-separation: 16px;
+@default-content-top-separation: @default-height + @default-separation;
+
+.shadow (@distance: 5px, @blur: 5px) {
+  -webkit-box-shadow: 0px @distance @blur rgba(95, 95, 95, 0.5);
+  -moz-box-shadow:    0px @distance @blur rgba(95, 95, 95, 0.5);
+  box-shadow:         0px @distance @blur rgba(95, 95, 95, 0.5);
+}
 
 #actionBarAttachmentPoint {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: @default-height;
+  background-color: #2d2d2d;
+  border-bottom: 1px solid black;
+  .shadow(3px, 3px);
+
+  font-family: 'lucida grande',tahoma,verdana,arial,sans-serif;
+  line-height: 1.28;
+  text-align: center;
+  font-size: 38px;
+  color: white;
 }
 
 #mainContentAttachmentPoint {
   width: 100%;
-  padding: @default-separation;
+  margin-top: @default-content-top-separation;
 }
 
 #navigationBarAttachmentPoint {
