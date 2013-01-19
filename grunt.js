@@ -57,7 +57,8 @@ module.exports = function (grunt) {
             compile:{
                 files:{
                     'target/server/server.js': ['lib/server/server.coffee'],
-                    'target/server/data.js': ['lib/server/data.coffee']
+                    'target/server/data.js': ['lib/server/data.coffee'],
+                    'target/client/app.js': ['lib/client/model.coffee', 'lib/client/view.coffee', 'lib/client/app.coffee']
                 }
             }
         },

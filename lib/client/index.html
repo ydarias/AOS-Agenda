@@ -5,42 +5,19 @@
     <title>Hello World</title>
 </head>
 <body>
-    <div id="content"></div>
+    <div id="actionBarAttachmentPoint"></div>
+    <div id="mainContentAttachmentPoint"></div>
+    <div id="navigationBarAttachmentPoint"></div>
 
     <script type="text/javascript" src="../../vendor/jquery-min.js"></script>
     <script type="text/javascript" src="../../vendor/underscore-min.js"></script>
     <script type="text/javascript" src="../../vendor/backbone-min.js"></script>
 
+    <script type="text/javascript" src="app.js"></script>
+
     <script type="text/javascript">
-        var Event = Backbone.Model.extend({});
-
-        var Events = Backbone.Collection.extend({
-            model: Event
-        });
-
-        var dataManager = {
-            getEvents: function() {
-                return new Events([
-                    {name: 'AOS 2k13'},
-                    {name: 'QCon San Francisco 2013'}
-                ]);
-            }
-        }
-
-        var EventsView = Backbone.View.extend({
-            el: '#content',
-            render: function() {
-                var events = dataManager.getEvents();
-                var that = this;
-                events.each(function(event) {
-                    that.$el.append('<p>' + event.get('name') + '</p>');
-                });
-            }
-        });
-
-        var eventsView = new EventsView();
-
-        eventsView.render();
+        var app = new AOS.App();
+        app.start();
     </script>
 </body>
 </html>
