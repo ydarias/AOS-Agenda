@@ -6,11 +6,13 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-    <script type="text/javascript" src="../../vendor/jquery-min.js"></script>
-    <script type="text/javascript" src="../../vendor/underscore-min.js"></script>
-    <script type="text/javascript" src="../../vendor/backbone-min.js"></script>
-
-    <script type="text/javascript" src="app.js"></script>
+    <script src="js/libs/jquery-min.js"></script>
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/libs/backbone-min.js"></script>
+    <script src="js/libs/handlebars.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/templates.js"></script>
+    <script type="text/javascript" src="js/app/views/SlotsView.js"></script>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
@@ -34,69 +36,16 @@
 
     </header>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top: 50px">
 
-
-
-        <div style="margin-top: 50px; margin-left: 6px;">
-        <div  id="eventsList" class="media-list">
-            <div class="slot row-fluid">
-
-
-            </div>
-
-            <div class="slot row-fluid">
-                <div class="time span1 offset1">
-                    <span class="label label-inverse">17:00-17:45</span>
-                </div>
-                <div class="info span10" style="min-width: 200px;">
-                    <!--h4 class="media-heading"><a id=clickEvent1 class="pull-left" href="event.html">{{titleEvent}}</a></h4-->
-
-                    <blockquote>
-                        <p>¿Tienes una idea de negocio? Exponla durante un minuto</p>
-                        <small>Guido ...</small>
-                        <span class="badge badge-important">Sala 2</span>
-                    </blockquote>
-                </div>
-
-            </div>
-
-            <div class="slot row-fluid">
-                <div class="time span1 offset1">
-                    <span class="label label-inverse">17:00-17:45</span>
-                </div>
-                <div class="info span10" style="min-width: 200px;">
-                    <!--h4 class="media-heading"><a id=clickEvent1 class="pull-left" href="event.html">{{titleEvent}}</a></h4-->
-
-                    <blockquote>
-                        <p>¿Tienes una idea de negocio? Exponla durante un minuto</p>
-                        <small>Guido ...</small>
-                        <span class="badge badge-important">Sala 3</span>
-                    </blockquote>
-                </div>
-
-            </div>
-
-            <div class="slot row-fluid">
-                <div class="time span1 offset1">
-                    <span class="label label-inverse">17:00-17:45</span>
-                </div>
-                <div class="info span10" style="min-width: 200px;">
-                    <!--h4 class="media-heading"><a id=clickEvent1 class="pull-left" href="event.html">{{titleEvent}}</a></h4-->
-
-                    <blockquote>
-                        <p>¿Tienes una idea de negocio? Exponla durante un minuto</p>
-                        <small>Guido ...</small>
-                        <span class="badge badge-important">Sala 3</span>
-                    </blockquote>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
+        <div  class="content" />
 
     </div>
+
+    <script type="text/javascript">
+        var view = new App.SlotsView({el : ".content"});
+        view.render();
+    </script>
 
 </body>
 </html>
