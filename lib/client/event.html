@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AOS Agenda</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
@@ -10,35 +10,17 @@
     <script type="text/javascript" src="../../vendor/underscore-min.js"></script>
     <script type="text/javascript" src="../../vendor/backbone-min.js"></script>
 
-    <script type="text/javascript" src="app.js"></script>
-
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                <a class="brand" href="index.html">Weevent</a>
-                <div class="nav-collapse collapse">
-                    <ul class="nav">
-                        <li class="active"><a href="index.html">Home</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <div id="header" class="row-fluid">
+        <h1>Events</h1>
     </div>
-
-    <div class="container">
-        <h1>Event template</h1>
-        <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
-    </div>
-
-    <script type="text/javascript">
-        var app = new AOS.App();
-        app.start();
-    </script>
+    <div id="eventsList" class="row-fluid">
+        <ul id="optionsEvent" class="media-list">
+            <li id="mySchedule"><a id=clickEvent1 href="event.html">My Schedule</a></li>
+            <li id="schedule"><a id=clickEvent1 href="event.html">Schedule</a></li>
+            <li id="location"><a id=clickEvent1 href="event.html">Location</a></li>
+            <li id="twitter"><a id=clickEvent1 href="event.html">Twitter</a></li>
+        </ul>
+     </div>
 
 </body>
 </html>
