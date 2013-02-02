@@ -3,23 +3,42 @@
 <head>
     <meta charset="utf-8">
     <title>AOS Agenda</title>
-
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-    <div id="actionBarAttachmentPoint"></div>
-    <div id="mainContentAttachmentPoint"></div>
-    <div id="navigationBarAttachmentPoint"></div>
-
     <script type="text/javascript" src="../../vendor/jquery-min.js"></script>
     <script type="text/javascript" src="../../vendor/underscore-min.js"></script>
     <script type="text/javascript" src="../../vendor/backbone-min.js"></script>
 
     <script type="text/javascript" src="app.js"></script>
 
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">Weevent</a>
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Bootstrap starter template</h1>
+        <p>Use this document as a way to quick start any new project.<br> All you get is this message and a barebones HTML document.</p>
+    </div>
+
     <script type="text/javascript">
         var app = new AOS.App();
         app.start();
     </script>
+
 </body>
 </html>
