@@ -35,8 +35,14 @@ module.exports = function (grunt) {
             }
         },
         watch : {
-            files : '<config:lint.files>',
-            tasks : 'lint qunit'
+            less : {
+                files : "lib/client/templates/*.html",
+                tasks : "handlebars"
+            },
+            tasks : {
+                files : "lib/client/less/**/*.less",
+                tasks : "less"
+            }
         },
         jshint : {
             options : {
@@ -81,23 +87,21 @@ module.exports = function (grunt) {
         handlebars : {
             compile : {
                 options : {
-                    namespace : "JST"
-                },
-                processName: function(filename) {
-                    return filename.toUpperCase();
+                    wrapped : true,
+                    namespace : "JST",
+                    processName: function(filename) {
+                        var pieces = filename.split("/");
+                        var file = pieces[pieces.length - 1];
+                        var fileName = file.split(".")[0];
+                        return fileName;
+                    }
                 },
                 files : {
                     "lib/client/js/app/templates.js" : ["lib/client/templates/*.html"]
                 }
-            },
-            options : {
-                processPartialName: function(filePath) { // input:  templates/_header.hbs
-                    console.log(filePath);
-                    var pieces = filePath.split("/");
-                    return pieces[pieces.length - 1]; // output: _header.hbs
-                }
             }
         }
+
     });
 
     // Default task.
