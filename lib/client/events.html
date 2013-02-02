@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="initial-scale=1.0" />
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
-    <script type="text/javascript" src="../../vendor/jquery-min.js"></script>
-    <script type="text/javascript" src="../../vendor/underscore-min.js"></script>
-    <script type="text/javascript" src="../../vendor/backbone-min.js"></script>
+    <script src="js/libs/jquery-min.js"></script>
+    <script src="js/libs/underscore-min.js"></script>
+    <script src="js/libs/backbone-min.js"></script>
+    <script src="js/libs/handlebars.js"></script>
+    <script src="js/app/app.js"></script>
+    <script src="js/app/templates.js"></script>
+    <script src="js/app/views/EventsListView.js"></script>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
@@ -27,22 +32,13 @@
             </div>
         </div>
     </div>
-    <div class="content">
-        <header></header>
-        <div class="container">
-            <div class="row-fluid">
-                <div  id="eventsList" class="media-list">
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            <img class="media-object" alt="64x64" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACDUlEQVR4Xu2Yz6/BQBDHpxoEcfTjVBVx4yjEv+/EQdwa14pTE04OBO+92WSavqoXOuFp+u1JY3d29rvfmQ9r7Xa7L8rxY0EAOAAlgB6Q4x5IaIKgACgACoACoECOFQAGgUFgEBgEBnMMAfwZAgaBQWAQGAQGgcEcK6DG4Pl8ptlsRpfLxcjYarVoOBz+knSz2dB6vU78Lkn7V8S8d8YqAa7XK83ncyoUCjQej2m5XNIPVmkwGFC73TZrypjD4fCQAK+I+ZfBVQLwZlerFXU6Her1eonreJ5HQRAQn2qj0TDukHm1Ws0Ix2O2260RrlQqpYqZtopVAoi1y+UyHY9Hk0O32w3FkI06jkO+74cC8Dh2y36/p8lkQovFgqrVqhFDEzONCCoB5OSk7qMl0Gw2w/Lo9/vmVMUBnGi0zi3Loul0SpVKJXRDmphvF0BOS049+n46nW5sHRVAXMAuiTZObcxnRVA5IN4DJHnXdU3dc+OLP/V63Vhd5haLRVM+0jg1MZ/dPI9XCZDUsbmuxc6SkGxKHCDzGJ2j0cj0A/7Mwti2fUOWR2Km2bxagHgt83sUgfcEkN4RLx0phfjvgEdi/psAaRf+lHmqEviUTWjygAC4EcKNEG6EcCOk6aJZnwsKgAKgACgACmS9k2vyBwVAAVAAFAAFNF0063NBAVAAFAAFQIGsd3JN/qBA3inwDTUHcp+19ttaAAAAAElFTkSuQmCC">
-                        </a>
-                        <div class="media-body">
-                            <h4 class="media-heading"><a id=clickEvent1 class="pull-left" href="event.html">Event 3 (Now)</a></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container">
+        <div class="content">
     </div>
+
+    <script type="text/javascript">
+        var view = new App.EventListView({el : ".content"});
+        view.render();
+    </script>
 </body>
 </html>
