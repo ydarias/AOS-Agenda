@@ -3,6 +3,5 @@ target/**
 node_modules/**
 *.iml
 lib/client/js/app/templates.js
-lib/client/css/bootstrap.css
 atlassian-ide-plugin.xml
-
+lib/client/css

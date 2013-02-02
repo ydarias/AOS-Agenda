@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta name="viewport" content="initial-scale=1.0" />
     <meta charset="utf-8">
-    <title>Schedule</title>
+    <title></title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 </head>
 <body>
@@ -12,7 +13,7 @@
     <script src="js/libs/handlebars.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/templates.js"></script>
-    <script type="text/javascript" src="js/app/views/SlotsView.js"></script>
+    <script src="js/app/views/EventsListView.js"></script>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
@@ -31,21 +32,13 @@
             </div>
         </div>
     </div>
-
-    <header class="">
-
-    </header>
-
-    <div class="container-fluid" style="margin-top: 50px">
-
-        <div  class="content" />
-
+    <div class="container">
+        <div class="content">
     </div>
 
     <script type="text/javascript">
-        var view = new App.SlotsView({el : ".content"});
+        var view = new App.EventListView({el : ".content"});
         view.render();
     </script>
-
 </body>
 </html>
