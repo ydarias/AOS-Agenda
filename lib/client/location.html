@@ -13,7 +13,7 @@
 <script src="js/libs/handlebars.js"></script>
 <script src="js/app/app.js"></script>
 <script src="js/app/templates.js"></script>
-<script src="js/app/views/OptionsEventListView.js"></script>
+<script src="js/app/views/LocationView.js"></script>
 
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
@@ -37,7 +37,8 @@
     </div>
 
     <script type="text/javascript">
-        var view = new App.OptionsEventListView({el : ".content"});
+        var location = {lat : 28.168875, lng : -16.556396};
+        var view = new App.LocationView({el : ".content", location : location });
         view.render();
     </script>
 </body>
