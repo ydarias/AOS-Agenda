@@ -3,3 +3,29 @@
 .content {
   margin-top: 44px;
 }
+
+.slot {
+  .time {
+    .pull-left;
+    min-width: 80px;
+  }
+
+  .info {
+    min-width: 200px
+  }
+}
+
+.badge {
+// Important (red)
+  &-color1         { background-color: @errorText; }
+  &-color1[href]   { background-color: darken(@errorText, 10%); }
+// Warnings (orange)
+  &-color2           { background-color: @orange; }
+  &-color2[href]     { background-color: darken(@orange, 10%); }
+// Success (green)
+  &-color3           { background-color: @successText; }
+  &-color3[href]     { background-color: darken(@successText, 10%); }
+// Info (turquoise)
+  &-color4              { background-color: @infoText; }
+  &-color4[href]        { background-color: darken(@infoText, 10%); }
+}
