@@ -1,0 +1,51 @@
+<h1>Admin Event</h1>
+
+
+<form class=>
+    <fieldset>
+        <legend>Event info</legend>
+        <label>Name</label>
+        <input type="text">
+        <label>Description</label>
+        <textarea rows="5"></textarea>
+    </fieldset>
+
+    <fieldset>
+        <legend>Location</legend>
+        <div class="map"></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Inside map</legend>
+        <input type="file">
+    </fieldset>
+
+    <fieldset>
+        <legend>Slots</legend>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Tags</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each slots}}
+                <tr>
+                    <td>{{title}}</td>
+                    <td>{{tags}}</td>
+                    <td>{{time}}</td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </fieldset>
+
+
+    <fieldset>
+
+    </fieldset>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

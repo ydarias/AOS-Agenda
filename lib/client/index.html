@@ -2,21 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AOS Agenda</title>
+    <title>Weevent</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuTVQEjrL28mJVqann7LKzwweqbwc5BhY&sensor=false"></script>
     <script src="js/libs/jquery-min.js"></script>
     <script src="js/libs/underscore-min.js"></script>
     <script src="js/libs/backbone-min.js"></script>
     <script src="js/libs/handlebars.js"></script>
     <script src="js/app/app.js"></script>
     <script src="js/app/templates.js"></script>
+    <script src="js/app/Router.js"></script>
     <script src="js/app/views/BasicView.js"></script>
-    <script src=""></script>
-
-
+    <script src="js/app/views/AdminEventView.js"></script>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
@@ -41,8 +41,8 @@
     </div>
 
     <script type="text/javascript">
-        var view = new App.BasicView({el : ".content"});
-        view.render();
+        var router = new App.Router({el : ".content"});
+        Backbone.history.start({pushState: false});
     </script>
 
 </body>
