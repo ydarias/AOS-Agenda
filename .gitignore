@@ -2,4 +2,5 @@
 target/**
 node_modules/**
 *.iml
-
+lib/client/js/app/template.js
+lib/client/css/bootstrap.css
