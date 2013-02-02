@@ -1,16 +1,1 @@
-{
-    "name" : "Weevent",
-    "author" : "StartupWeekend",
-    "version" : "0.0.1",
-    "dependencies" : {
-        "grunt" : "*",
-        "grunt-contrib-less" : "*",
-        "grunt-contrib-copy" : "*",
-        "grunt-contrib-handlebars" : "*",
-        "grunt-contrib-less" : "*",
-        "grunt-contrib-coffee" : "*"
-    },
-    "engine" : {
-        "node" : ">=0.4"
-    }
-}
+{    "name" : "Weevent",    "author" : "StartupWeekend",    "version" : "0.0.1",    "dependencies" : {        "grunt" : "*",        "grunt-contrib-less" : "*",        "grunt-contrib-copy" : "*",        "grunt-contrib-handlebars" : "*",        "grunt-contrib-less" : "*",        "grunt-contrib-coffee" : "*"    },    "engine" : {        "node" : ">=0.4"    }}
