@@ -105,6 +105,6 @@ module.exports = function (grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', 'copy coffee less');
+    grunt.registerTask('default', 'less handlebars');
 
 };
