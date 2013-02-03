@@ -1,4 +1,11 @@
 <div class="media-list">
+ <div class="row-fluid span12 slots-header">
+     {{#if listTitle}}
+        <h4>listTitle</h4>
+     {{else}}
+        <h4>Schedule</h4>
+     {{/if}}
+ </div>
 {{#each slots}}
     <div class="slot row-fluid">
         <div class="time span1 offset1">
