@@ -2,4 +2,6 @@
 target/**
 node_modules/**
 *.iml
+lib/client/js/app/templates.js
+atlassian-ide-plugin.xml
 lib/client/css
