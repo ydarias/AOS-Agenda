@@ -1,14 +1,16 @@
 <div class="slot row-fluid {{favClass}}">
-    <div class="time span1 offset1">
+    <div class="time span3">
         <span class="label label-inverse">{{slot.date.startTime}}-{{slot.date.finishTime}}</span>
     </div>
-    <div class="info span10" style="min-width: 200px;">
+    <div class="info span9">
         <!--h4 class="media-heading"><a id=clickEvent1 class="pull-left" href="event.html">{{titleEvent}}</a></h4-->
 
         <blockquote>
             <p>{{slot.title}}</p>
             <small>{{slot.author}}</small>
+            <i class="icon-star" class="push-right" style="float:right; margin-top: -20px;"></i>
             <span class="badge badge-{{slot.location.color}}">{{slot.location.description}}</span>
         </blockquote>
+
     </div>
 </div>
