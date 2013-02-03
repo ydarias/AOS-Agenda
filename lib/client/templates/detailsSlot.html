@@ -1,0 +1,31 @@
+<div class="row-fluid">
+    <div class="container-fluid">
+        <h4>Rating ({{slot.details.rating}}/5)</h4>
+        <div class="btn-group gapRightItemNoTitleDetailSlot">
+            {{#each starImgs}}
+                <i class="{{this}}"></i>
+            {{/each}}
+        </div>
+    </div>
+    <div class="container-fluid gapItemDetailSlot">
+        <h4>Timetable</h4>
+        <p class="gapRightItemNoTitleDetailSlot">{{slot.date.startTime}} - {{slot.date.finishTime}}</p>
+    </div>
+    <div class="container-fluid gapItemDetailSlot">
+        <h4>Author</h4>
+        <p class="gapRightItemNoTitleDetailSlot">{{slot.author}}<p>
+    </div>
+    <div class="container-fluid gapItemDetailSlot">
+        <h4>Description</h4>
+        <p class="gapRightItemNoTitleDetailSlot">{{slot.details.description}}</p>
+    </div>
+    <div class="container-fluid gapItemDetailSlot">
+        <h4>Documentation</h4>
+        <div class="btn-group gapRightItemNoTitleDetailSlot">
+            <button class="btn">Full Paper</button>
+            <button class="btn">Slides Presentation</button>
+        </div>
+    </div>
+</div>
+
+

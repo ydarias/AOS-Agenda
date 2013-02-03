@@ -5,3 +5,4 @@ node_modules/**
 lib/client/js/app/templates.js
 atlassian-ide-plugin.xml
 lib/client/css
+lib/client/js/app/templates.js
