@@ -1,11 +1,11 @@
 @import "bootstrap/bootstrap";
 @import "bootstrap/responsive";
 
-@media (min-width: 768px) and (max-width: 979px) {
-  //body {
-  //  padding-top: 60px;
-  //  padding-bottom: 40px;
-  //}
+@media (min-width: 979px) {
+  body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+  }
 }
 
 .map {
@@ -21,15 +21,23 @@
   min-width: 320px;
 }
 
+.slots-header {
+  background: @black;
+  color: white;
+  margin-left: -20px;
+  text-align: center;
+  min-width: 320px;
+}
+
 .slot {
   .time {
     min-width: 80px;
   }
+
   .info {
     //min-width: 200px
   }
 }
-
 
 .slot.fav {
   background-color: #cce6f5;
@@ -38,12 +46,11 @@
 .hero-img {
   max-height: 125px;
   margin-bottom: 10px;
-
 }
+
 .push-right {
   margin-top: 10px;
   background: #EEE;
-
 }
 
 .badge {
@@ -88,4 +95,13 @@
 
 .star{
   background:url("img/favon.png");
+}
+
+.brand {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  margin: auto;
+  box-sizing: border-box;
 }
