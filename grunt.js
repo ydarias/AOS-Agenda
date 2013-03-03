@@ -66,7 +66,8 @@ module.exports = function (grunt) {
                 files : {
                     'target/server/server.js' : ['lib/server/server.coffee'],
                     'target/server/data.js' : ['lib/server/data.coffee'],
-                    'target/client/app.js' : ['lib/client/model.js', 'lib/client/view.js', 'lib/client/app.js']
+                    'target/server/logger.js': ['lib/server/logger.coffee'],
+                    'target/server/eventService.js': ['lib/server/eventService.coffee']
                 }
             }
         },
@@ -105,6 +106,6 @@ module.exports = function (grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', 'less handlebars');
+    grunt.registerTask('default', 'coffee less handlebars');
 
 };
