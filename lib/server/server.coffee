@@ -1,7 +1,14 @@
 express = require 'express'
-data = require './data'
 logger = require './logger'
-eventService = require './eventService'
+
+mongoose = require 'mongoose'
+mongoose.connect('localhost', 'weevent')
+
+eventSchema = new mongoose.Schema
+  name: 'String'
+  description: 'String'
+
+Event = mongoose.model('Event', eventSchema)
 
 log = logger.factory.buildLogger logger.level.INFO
 
@@ -21,19 +28,41 @@ logAccess = (req, res, next) ->
   next()
 
 app.configure( ->
-  app.use allowCrossDomain
   app.use express.bodyParser()
+  app.use allowCrossDomain
   app.use logAccess
 )
 
 app.get('/events', (request, response) ->
-  output = JSON.stringify data.events
-  response.end output
+  query = Event.find()
+  query.exec (error, events) ->
+    if error
+      response.end JSON.stringify
+        error: 'Error obtaining events list'
+    else
+      response.end JSON.stringify events
+)
+
+app.post('/events', (request, response) ->
+  event = new Event
+    name: request.body.name
+    description: request.body.description
+  event.save (error) ->
+    if error
+      response.end JSON.stringify
+        error: 'Error saving event'
+    else
+      response.end JSON.stringify 'OK'
 )
 
 app.get('/events/:eventId', (request, response) ->
-  event = eventService.findEvent request.param.eventId
-  response.end JSON.stringify event
+  query = Event.findOne({'_id': request.params.eventId})
+  query.exec (error, event) ->
+    if error
+      response.end JSON.stringify
+        error: 'Error obtaining event with id ' + request.params.eventId
+    else
+      response.end JSON.stringify event
 )
 
 log.info 'Server is ready in port 8080'
