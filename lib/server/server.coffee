@@ -33,7 +33,7 @@ app.configure( ->
   app.use logAccess
 )
 
-app.get('/events', (request, response) ->
+app.get('/api/events', (request, response) ->
   query = Event.find()
   query.exec (error, events) ->
     if error
@@ -43,7 +43,7 @@ app.get('/events', (request, response) ->
       response.end JSON.stringify events
 )
 
-app.post('/events', (request, response) ->
+app.post('/api/events', (request, response) ->
   event = new Event
     name: request.body.name
     description: request.body.description
@@ -55,7 +55,11 @@ app.post('/events', (request, response) ->
       response.end JSON.stringify 'OK'
 )
 
-app.get('/events/:eventId', (request, response) ->
+app.options('/api/events', (request, response) ->
+  response.end 'OK'
+)
+
+app.get('/api/events/:eventId', (request, response) ->
   query = Event.findOne({'_id': request.params.eventId})
   query.exec (error, event) ->
     if error
