@@ -96,7 +96,8 @@ module.exports = function (grunt) {
                     }
                 },
                 files : {
-                    "lib/client/js/app/templates.js" : ["lib/client/templates/*.html"]
+                    "lib/client/js/app/templates.js" : ["lib/client/templates/*.html"],
+                    "lib/webclient/templates/templates.js": ["lib/webclient/templates/*.html"]
                 }
             }
         }
