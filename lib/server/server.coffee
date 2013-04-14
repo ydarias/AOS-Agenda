@@ -37,6 +37,7 @@ app.get('/api/events', (request, response) ->
   query = Event.find()
   query.exec (error, events) ->
     if error
+      response.status 400
       response.end JSON.stringify
         error: 'Error obtaining events list'
     else
@@ -49,10 +50,11 @@ app.post('/api/events', (request, response) ->
     description: request.body.description
   event.save (error) ->
     if error
+      response.status 400
       response.end JSON.stringify
         error: 'Error saving event'
     else
-      response.end JSON.stringify 'OK'
+      response.end JSON.stringify event
 )
 
 app.options('/api/events', (request, response) ->
