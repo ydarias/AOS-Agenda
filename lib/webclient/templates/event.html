@@ -1,8 +1,17 @@
 <tr>
     <td>
-        <h2>{{name}}</h2>
-        <div>
-            {{description}}
-        </div>
+        <a href="#sessions/{{id}}">
+            <div class="row-fluid">
+                <div class="span8">
+                    <h2>{{name}}</h2>
+                </div>
+                <div class="span4">
+                    <h2>{{startDate}} - {{endDate}}</h2>
+                </div>
+            </div>
+            <div>
+                {{description}}
+            </div>
+        </a>
     </td>
 </tr>

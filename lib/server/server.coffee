@@ -6,7 +6,11 @@ mongoose.connect('localhost', 'weevent')
 
 eventSchema = new mongoose.Schema
   name: 'String'
-  description: 'String'
+  description: 'String',
+  startDate:
+    type: 'Date',
+  endDate:
+    type: 'Date'
 
 Event = mongoose.model('Event', eventSchema)
 
@@ -48,6 +52,8 @@ app.post('/api/events', (request, response) ->
   event = new Event
     name: request.body.name
     description: request.body.description
+    startDate: request.body.startDate
+    endDate: request.body.endDate
   event.save (error) ->
     if error
       response.status 400
