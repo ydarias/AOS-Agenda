@@ -42,10 +42,10 @@ app.get('/api/events', (request, response) ->
   query.exec (error, events) ->
     if error
       response.status 400
-      response.end JSON.stringify
+      response.json
         error: 'Error obtaining events list'
     else
-      response.end JSON.stringify events
+      response.json events
 )
 
 app.post('/api/events', (request, response) ->
@@ -57,10 +57,10 @@ app.post('/api/events', (request, response) ->
   event.save (error) ->
     if error
       response.status 400
-      response.end JSON.stringify
+      response.json
         error: 'Error saving event'
     else
-      response.end JSON.stringify event
+      response.json event
 )
 
 app.options('/api/events', (request, response) ->
@@ -71,10 +71,10 @@ app.get('/api/events/:eventId', (request, response) ->
   query = Event.findOne({'_id': request.params.eventId})
   query.exec (error, event) ->
     if error
-      response.end JSON.stringify
+      response.json
         error: 'Error obtaining event with id ' + request.params.eventId
     else
-      response.end JSON.stringify event
+      response.json event
 )
 
 log.info 'Server is ready in port 8080'
