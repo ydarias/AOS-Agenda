@@ -23,9 +23,11 @@ module.exports = function (grunt) {
             files : ['test/**/*.html']
         },
         concat : {
-            dist : {
-                src : ['<banner:meta.banner>', '<file_strip_banner:lib/FILE_NAME.js>'],
-                dest : 'dist/FILE_NAME.js'
+            views: {
+                src: [
+                    'lib/webclient/lib/views/ListEventsView.js',
+                    'lib/webclient/lib/views/EventDashboardView.js'],
+                dest: 'lib/webclient/lib/views.js'
             }
         },
         min : {
@@ -105,6 +107,6 @@ module.exports = function (grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', 'coffee less handlebars');
+    grunt.registerTask('default', 'concat coffee less handlebars');
 
 };
