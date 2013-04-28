@@ -26,6 +26,7 @@ module.exports = function (grunt) {
             views: {
                 src: [
                     'lib/webclient/lib/views/ListEventsView.js',
+                    'lib/webclient/lib/views/AbstractDesktopView.js',
                     'lib/webclient/lib/views/EventDashboardView.js',
                     'lib/webclient/lib/views/EventSessionsView.js'],
                 dest: 'lib/webclient/lib/views.js'
