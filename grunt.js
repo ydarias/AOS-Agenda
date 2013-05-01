@@ -69,7 +69,8 @@ module.exports = function (grunt) {
             compile : {
                 files : {
                     'target/server/server.js' : ['lib/server/server.coffee'],
-                    'target/server/logger.js': ['lib/server/logger.coffee']
+                    'target/server/logger.js': ['lib/server/logger.coffee'],
+                    'target/server/schema.js': ['lib/server/schema.coffee']
                 }
             }
         },

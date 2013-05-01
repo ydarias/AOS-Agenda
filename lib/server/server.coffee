@@ -1,25 +1,6 @@
 express = require 'express'
 logger = require './logger'
-
-mongoose = require 'mongoose'
-mongoose.connect('localhost', 'weevent')
-
-sessionSchema = new mongoose.Schema
-  name: 'String'
-  description: 'String'
-
-eventSchema = new mongoose.Schema
-  name: 'String'
-  description: 'String',
-  startDate:
-    type: 'Date',
-  endDate:
-    type: 'Date',
-  sessions: [ sessionSchema ]
-
-Session = mongoose.model('Session', sessionSchema)
-
-Event = mongoose.model('Event', eventSchema)
+schema = require './schema'
 
 log = logger.factory.buildLogger logger.level.INFO
 
@@ -45,7 +26,7 @@ app.configure( ->
 )
 
 app.get('/api/events', (request, response) ->
-  query = Event.find()
+  query = schema.Event.find()
   query.exec (error, events) ->
     if error
       response.status 400
@@ -56,7 +37,7 @@ app.get('/api/events', (request, response) ->
 )
 
 app.post('/api/events', (request, response) ->
-  event = new Event
+  event = new schema.Event
     name: request.body.name
     description: request.body.description
     startDate: request.body.startDate
@@ -75,9 +56,10 @@ app.options('/api/events', (request, response) ->
 )
 
 app.get('/api/events/:eventId', (request, response) ->
-  query = Event.findOne({'_id': request.params.eventId})
+  query = schema.Event.findOne({'_id': request.params.eventId})
   query.exec (error, event) ->
     if error
+      response.status 400
       response.json
         error: 'Error obtaining event with id ' + request.params.eventId
     else
@@ -85,13 +67,14 @@ app.get('/api/events/:eventId', (request, response) ->
 )
 
 app.post('/api/events/:eventId/session', (request, response) ->
-  session = new Session
+  session = new schema.Session
     name: request.body.name
     description: request.body.description
-  Event.findById(request.params.eventId).exec((error, event) ->
+  schema.Event.findById(request.params.eventId).exec((error, event) ->
     if error
+      response.status 400
       response.json
-        error: 'Error creating session ' + session
+        error: 'Error creating session: event with id ' + request.params.eventId + ' does not exists'
     else
       event.sessions.push session
       event.save (error) ->
