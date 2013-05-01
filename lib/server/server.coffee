@@ -4,13 +4,20 @@ logger = require './logger'
 mongoose = require 'mongoose'
 mongoose.connect('localhost', 'weevent')
 
+sessionSchema = new mongoose.Schema
+  name: 'String'
+  description: 'String'
+
 eventSchema = new mongoose.Schema
   name: 'String'
   description: 'String',
   startDate:
     type: 'Date',
   endDate:
-    type: 'Date'
+    type: 'Date',
+  sessions: [ sessionSchema ]
+
+Session = mongoose.model('Session', sessionSchema)
 
 Event = mongoose.model('Event', eventSchema)
 
@@ -75,6 +82,26 @@ app.get('/api/events/:eventId', (request, response) ->
         error: 'Error obtaining event with id ' + request.params.eventId
     else
       response.json event
+)
+
+app.post('/api/events/:eventId/session', (request, response) ->
+  session = new Session
+    name: request.body.name
+    description: request.body.description
+  Event.findById(request.params.eventId).exec((error, event) ->
+    if error
+      response.json
+        error: 'Error creating session ' + session
+    else
+      event.sessions.push session
+      event.save (error) ->
+        if error
+          response.status 400
+          response.json
+            error: 'Error saving the new session in the given event'
+        else
+          response.json session
+  )
 )
 
 log.info 'Server is ready in port 8080'
