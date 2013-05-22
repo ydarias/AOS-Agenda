@@ -98,6 +98,10 @@ app.get('/api/events/:eventId/sessions', (request, response) ->
       response.json event.sessions
 )
 
+app.options('/api/events/:eventId/sessions', (request, response) ->
+  response.end 'OK'
+)
+
 log.info 'Server is ready in port 8080'
 
 app.listen 8080
