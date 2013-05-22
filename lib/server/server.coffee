@@ -66,7 +66,7 @@ app.get('/api/events/:eventId', (request, response) ->
       response.json event
 )
 
-app.post('/api/events/:eventId/session', (request, response) ->
+app.post('/api/events/:eventId/sessions', (request, response) ->
   session = new schema.Session
     name: request.body.name
     description: request.body.description
@@ -85,6 +85,17 @@ app.post('/api/events/:eventId/session', (request, response) ->
         else
           response.json session
   )
+)
+
+app.get('/api/events/:eventId/sessions', (request, response) ->
+  query = schema.Event.findOne({'_id': request.params.eventId})
+  query.exec (error, event) ->
+    if error
+      response.status 400
+      response.json
+        error: 'Error obtaining session for event with id ' + request.params.eventId
+    else
+      response.json event.sessions
 )
 
 log.info 'Server is ready in port 8080'
