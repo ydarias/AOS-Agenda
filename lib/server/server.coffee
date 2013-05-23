@@ -66,6 +66,10 @@ app.get('/api/events/:eventId', (request, response) ->
       response.json event
 )
 
+app.options('/api/events/:eventId', (request, response) ->
+  response.end 'OK'
+)
+
 app.post('/api/events/:eventId/sessions', (request, response) ->
   session = new schema.Session
     name: request.body.name
@@ -99,6 +103,22 @@ app.get('/api/events/:eventId/sessions', (request, response) ->
 )
 
 app.options('/api/events/:eventId/sessions', (request, response) ->
+  response.end 'OK'
+)
+
+app.get('/api/events/:eventId/stats', (request, response) ->
+  query = schema.Event.findOne({'_id': request.params.eventId})
+  query.exec (error, event) ->
+    if error
+      response.status 400
+      response.json
+        error: 'Error obtaining event with id ' + request.params.eventId
+    else
+      response.json
+        sessionsNumber: event.sessions.length
+)
+
+app.options('/api/events/:eventId/stats', (request, response) ->
   response.end 'OK'
 )
 
