@@ -25,6 +25,7 @@ module.exports = function (grunt) {
         concat : {
             views: {
                 src: [
+                    'lib/webclient/lib/views/MainTitleView.js',
                     'lib/webclient/lib/views/ListEventsView.js',
                     'lib/webclient/lib/views/AbstractDesktopView.js',
                     'lib/webclient/lib/views/EventDashboardView.js',
