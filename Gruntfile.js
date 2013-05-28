@@ -7,6 +7,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-handlebars');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-preprocess');
 
     // Project configuration.
     grunt.initConfig({
@@ -18,6 +19,31 @@ module.exports = function (grunt) {
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
                 'YOUR_NAME; Licensed MIT */'
         },
+
+        preprocess : {
+            development : {
+                files: {
+                    'build/webclient/lib/WeEvent.js': 'lib/webclient/lib/WeEvent.js'
+                },
+                options: {
+                    context: {
+                        DEVELOPMENT: true
+                    }
+                }
+            },
+            production : {
+                files: {
+                    'build/webclient/lib/WeEvent.js': 'lib/webclient/lib/WeEvent.js'
+                },
+                options: {
+                    context: {
+                        PRODUCTION: true
+                    }
+                }
+            }
+        },
+
+
         lint : {
             files : ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
         },
@@ -32,7 +58,7 @@ module.exports = function (grunt) {
                     'lib/webclient/lib/views/AbstractDesktopView.js',
                     'lib/webclient/lib/views/EventDashboardView.js',
                     'lib/webclient/lib/views/EventSessionsView.js'],
-                dest: 'lib/webclient/lib/views.js'
+                dest: 'build/webclient/lib/views.js'
             }
         },
         min : {
@@ -77,14 +103,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        copy : {
-            target : {
-                files : {
-                    'target/client/' : ['lib/client/*.html'],
-                    'target/webclient/' : ['lib/webclient/**']
-                }
-            }
-        },
         less : {
             production : {
                 files : {
@@ -106,18 +124,33 @@ module.exports = function (grunt) {
                 },
                 files : {
                     "lib/client/js/app/templates.js" : ["lib/client/templates/*.html"],
-                    "lib/webclient/templates/templates.js": ["lib/webclient/templates/*.html"]
+                    "build/webclient/templates/templates.js": ["lib/webclient/templates/*.html"]
                 }
             }
         },
+        copy : {
+            target : {
+                files : [
+                    {expand: true, cwd: 'lib/client', src: ['*.html'], dest: 'target/client/'},
+                    {expand: true, cwd: 'lib/webclient', src: ['*.html'],dest: 'target/webclient/'},
+                    {expand: true, cwd: 'lib/webclient/bootstrap-theme', src: ['**'], dest: 'target/webclient/bootstrap-theme'},
+                    {expand: true, cwd: 'lib/webclient/css', src: ['**'], dest: 'target/webclient/css'},
+                    {expand: true, cwd: 'lib/webclient/img', src: ['**'], dest: 'target/webclient/img'},
+                    {expand: true, cwd: 'lib/webclient/js', src: ['**'], dest: 'target/webclient/js'},
+                    {expand: true, cwd: 'build/webclient/templates', src: ['*.js'], dest: 'target/webclient/templates'},
+                    {expand: true, cwd: 'lib/webclient/lib', src: ['Ajax.js', 'model/*.js', 'Router.js'], dest: 'target/webclient/lib'},
+                    {expand: true, cwd: 'build/webclient/lib', src: ['**'], dest: 'target/webclient/lib'}
+                ]
+            }
+        },
         clean: {
-            build: ["target/client", "target/server", "target/webclient"]
+            build: ["target", "build"]
         }
     });
 
     // Default task.
-    grunt.registerTask('default', ['concat', 'coffee', 'less', 'handlebars', 'copy']);
-    grunt.registerTask('build', ['concat', 'coffee', 'less', 'handlebars', 'copy']);
+    grunt.registerTask('default', ['preprocess:development', 'concat', 'coffee', 'less', 'handlebars', 'copy']);
+    grunt.registerTask('build', ['preprocess:production', 'concat', 'coffee', 'less', 'handlebars', 'copy']);
     grunt.registerTask('prepare', ['clean']);
 
 };
