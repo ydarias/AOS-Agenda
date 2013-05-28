@@ -5,6 +5,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-handlebars');
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 
     // Project configuration.
     grunt.initConfig({
@@ -78,7 +80,8 @@ module.exports = function (grunt) {
         copy : {
             target : {
                 files : {
-                    'target/client/' : ['lib/client/*.html']
+                    'target/client/' : ['lib/client/*.html'],
+                    'target/webclient/' : ['lib/webclient/**']
                 }
             }
         },
@@ -106,11 +109,15 @@ module.exports = function (grunt) {
                     "lib/webclient/templates/templates.js": ["lib/webclient/templates/*.html"]
                 }
             }
+        },
+        clean: {
+            build: ["target/client", "target/server", "target/webclient"]
         }
-
     });
 
     // Default task.
-    grunt.registerTask('default', 'concat coffee less handlebars');
+    grunt.registerTask('default', ['concat', 'coffee', 'less', 'handlebars', 'copy']);
+    grunt.registerTask('build', ['concat', 'coffee', 'less', 'handlebars', 'copy']);
+    grunt.registerTask('prepare', ['clean']);
 
 };
