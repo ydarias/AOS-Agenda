@@ -19,7 +19,6 @@ module.exports = function (grunt) {
                 '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
                 'YOUR_NAME; Licensed MIT */'
         },
-
         preprocess : {
             development : {
                 files: {
@@ -42,14 +41,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-
-        lint : {
-            files : ['grunt.js', 'lib/**/*.js', 'test/**/*.js']
-        },
-        qunit : {
-            files : ['test/**/*.html']
-        },
         concat : {
             views: {
                 src: [
@@ -59,12 +50,6 @@ module.exports = function (grunt) {
                     'lib/webclient/lib/views/EventDashboardView.js',
                     'lib/webclient/lib/views/EventSessionsView.js'],
                 dest: 'build/webclient/lib/views.js'
-            }
-        },
-        min : {
-            dist : {
-                src : ['<banner:meta.banner>', '<config:concat.dist.dest>'],
-                dest : 'dist/FILE_NAME.min.js'
             }
         },
         watch : {
@@ -77,23 +62,6 @@ module.exports = function (grunt) {
                 tasks : "less"
             }
         },
-        jshint : {
-            options : {
-                curly : true,
-                eqeqeq : true,
-                immed : true,
-                latedef : true,
-                newcap : true,
-                noarg : true,
-                sub : true,
-                undef : true,
-                boss : true,
-                eqnull : true,
-                browser : true
-            },
-            globals : {}
-        },
-        uglify : {},
         coffee : {
             compile : {
                 files : {
