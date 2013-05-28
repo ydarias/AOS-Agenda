@@ -149,8 +149,8 @@ module.exports = function (grunt) {
     });
 
     // Default task.
-    grunt.registerTask('default', ['preprocess:development', 'concat', 'coffee', 'less', 'handlebars', 'copy']);
-    grunt.registerTask('build', ['preprocess:production', 'concat', 'coffee', 'less', 'handlebars', 'copy']);
+    grunt.registerTask('development', ['preprocess:development', 'concat', 'coffee', 'less', 'handlebars', 'copy']);
+    grunt.registerTask('production', ['preprocess:production', 'concat', 'coffee', 'less', 'handlebars', 'copy']);
     grunt.registerTask('prepare', ['clean']);
 
 };

@@ -1,5 +1,6 @@
 .idea/**
 target/**
+build/**
 node_modules/**
 *.iml
 lib/client/js/app/templates.js
