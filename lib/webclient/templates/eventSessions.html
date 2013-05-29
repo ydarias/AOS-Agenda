@@ -23,6 +23,22 @@
                         <textarea id="sessionDescription" class="input-xxlarge" placeholder="Your description here ..." rows="5"></textarea>
                     </div>
                 </div>
+                <div class="control-group">
+                    <label class="control-label" for="sessionDate">Session date</label>
+                    <div class="controls">
+                        <input id="sessionDate" type="text" class="input-xlarge" placeholder="dd/mm/yyyy hh:mm" />
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $('#sessionDate').datetimepicker({
+                        format: 'dd/mm/yyyy hh:ii',
+                        language: 'en',
+                        weekStart: 1,
+                        todayBtn:  1,
+                        autoclose: 1,
+                        todayHighlight: false
+                    })
+                </script>
                 <div class="form-actions">
                     <button id="submit-session-button" type="button" class="btn btn-primary">Submit</button>
                     <button id="cancel-button" type="button" class="btn">Cancel</button>
