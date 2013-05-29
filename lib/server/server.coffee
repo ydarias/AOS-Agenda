@@ -74,6 +74,7 @@ app.post('/api/events/:eventId/sessions', (request, response) ->
   session = new schema.Session
     name: request.body.name
     description: request.body.description
+    date: request.body.date
   schema.Event.findById(request.params.eventId).exec((error, event) ->
     if error
       response.status 400
