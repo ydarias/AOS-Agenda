@@ -100,14 +100,11 @@ module.exports = function (grunt) {
             target : {
                 files : [
                     {expand: true, cwd: 'lib/client', src: ['*.html'], dest: 'target/client/'},
-                    {expand: true, cwd: 'lib/webclient', src: ['*.html'],dest: 'target/webclient/'},
-                    {expand: true, cwd: 'lib/webclient/bootstrap-theme', src: ['**'], dest: 'target/webclient/bootstrap-theme'},
-                    {expand: true, cwd: 'lib/webclient/css', src: ['**'], dest: 'target/webclient/css'},
-                    {expand: true, cwd: 'lib/webclient/img', src: ['**'], dest: 'target/webclient/img'},
-                    {expand: true, cwd: 'lib/webclient/js', src: ['**'], dest: 'target/webclient/js'},
-                    {expand: true, cwd: 'build/webclient/templates', src: ['*.js'], dest: 'target/webclient/templates'},
-                    {expand: true, cwd: 'lib/webclient/lib', src: ['Ajax.js', 'model/*.js', 'Router.js'], dest: 'target/webclient/lib'},
-                    {expand: true, cwd: 'build/webclient/lib', src: ['**'], dest: 'target/webclient/lib'}
+                    {expand: true,
+                        cwd: 'lib/webclient',
+                        src: ['*.html', 'bootstrap-theme/**', 'css/**', 'img/**', 'js/**', 'lib/Ajax.js', 'lib/model/*.js', 'lib/Router.js'],
+                        dest: 'target/webclient'},
+                    {expand: true, cwd: 'build/webclient', src: ['**'], dest: 'target/webclient'}
                 ]
             }
         },
