@@ -1,0 +1,31 @@
+<form id="editEventForm" class="form-horizontal">
+    <div id="form-errors"></div>
+    <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="eventName">Event name</label>
+            <div class="controls">
+                <input id="eventName" type="text" class="input-xxlarge " placeholder="Your event name here ..." value="{{name}}">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="dateRange">Dates</label>
+            <div class="controls">
+                <div class="input-prepend">
+                    <span class="add-on"><i class="icon-calendar"></i></span>
+                    <input id="dateRange" type="text" value="{{date startDate}} - {{date endDate}}"/>
+                </div>
+
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="eventDescription">Event description</label>
+            <div class="controls">
+                <textarea id="eventDescription" class="input-xxlarge" placeholder="Your description here ..." rows="5">{{description}}</textarea>
+            </div>
+        </div>
+        <div class="form-actions">
+            <button id="submit-edit-event-button" type="button" class="btn btn-primary">Submit</button>
+            <button id="cancel-edit-event-button" type="button" class="btn">Cancel</button>
+        </div>
+    </fieldset>
+</form>

@@ -49,7 +49,8 @@ module.exports = function (grunt) {
                     'lib/webclient/lib/views/AbstractDesktopView.js',
                     'lib/webclient/lib/views/EventDashboardView.js',
                     'lib/webclient/lib/views/EventSessionsView.js',
-                    'lib/webclient/lib/views/DisabledEventFormView.js'
+                    'lib/webclient/lib/views/DisabledEventFormView.js',
+                    'lib/webclient/lib/views/EditEventFormView.js'
                     ],
                 dest: 'build/webclient/lib/views.js'
             }
