@@ -16,7 +16,7 @@ allowCrossDomain = (req, res, next) ->
   next()
 
 logAccess = (req, res, next) ->
-  log.info 'Access on ' + req.path
+  log.info 'Access on [' + req.method + '] ' + req.path
   next()
 
 app.configure( ->
@@ -49,6 +49,23 @@ app.post('/api/events', (request, response) ->
         error: 'Error saving event'
     else
       response.json event
+)
+
+app.put('/api/events/:eventId', (request, response) ->
+  query = schema.Event.findOne({'_id': request.params.eventId})
+  query.exec (error, event) ->
+    if error
+      response.status 400
+      response.json
+        error: 'Error updating event with id ' + request.params.eventId
+    else
+      schema.Event.update {'_id': request.params.eventId}, { $set : request.body }, (error, result) ->
+        log.error "Error updating event #{event._id}"
+        response.status 400
+        response.json
+          error: 'Error updating event'
+      response.json event
+
 )
 
 app.options('/api/events', (request, response) ->

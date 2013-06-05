@@ -9,6 +9,10 @@ class Logger
     if (loggerLevel.INFO <= @level)
       console.log '[INFO] - ' + message
 
+  error: (message) ->
+    if (loggerLevel.Error <= @level)
+      console.log '[ERROR] - ' + message
+
 class LoggerFactory
   constructor: ->
 
