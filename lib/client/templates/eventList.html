@@ -1,12 +1,9 @@
 {{#each events}}
-    <div class="row-fluid {{classEvent}}">
+    <div class="row-fluid">
         <div class="media">
-            <a class="titleEvent" href="#events/{{id}}">
-                <div class="pull-left gapRight">
-                    <img class="media-object" alt="64x64" src="img/events/{{id}}_mini.png">
-                </div>
+            <a class="titleEvent" href="#events/{{_id}}">
                 <div class="media-body">
-                    {{titleEvent}}
+                    {{name}}
                 </div>
             </a>
         </div>

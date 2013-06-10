@@ -79,6 +79,10 @@ app.options('/api/events', (request, response) ->
   response.end 'OK'
 )
 
+app.options('/public/events', (request, response) ->
+  response.end 'OK'
+)
+
 getEvent = (request, response) ->
   query = schema.Event.findOne({'_id': request.params.eventId})
   query.exec (error, event) ->
@@ -93,11 +97,15 @@ app.get('/api/events/:eventId', (request, response) ->
   getEvent request, response
 )
 
+app.options('/api/events/:eventId', (request, response) ->
+  response.end 'OK'
+)
+
 app.get('/public/events/:eventId', (request, response) ->
   getEvent request, response
 )
 
-app.options('/api/events/:eventId', (request, response) ->
+app.options('/public/events/:eventId', (request, response) ->
   response.end 'OK'
 )
 
