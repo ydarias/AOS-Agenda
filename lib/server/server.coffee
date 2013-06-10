@@ -25,7 +25,7 @@ app.configure( ->
   app.use logAccess
 )
 
-app.get('/api/events', (request, response) ->
+listEvents = (request, response) ->
   query = schema.Event.find()
   query.exec (error, events) ->
     if error
@@ -34,6 +34,13 @@ app.get('/api/events', (request, response) ->
         error: 'Error obtaining events list'
     else
       response.json events
+
+app.get('/api/events', (request, response) ->
+  listEvents request, response
+)
+
+app.get('/public/events', (request, response) ->
+  listEvents request, response
 )
 
 app.post('/api/events', (request, response) ->
@@ -72,7 +79,7 @@ app.options('/api/events', (request, response) ->
   response.end 'OK'
 )
 
-app.get('/api/events/:eventId', (request, response) ->
+getEvent = (request, response) ->
   query = schema.Event.findOne({'_id': request.params.eventId})
   query.exec (error, event) ->
     if error
@@ -81,6 +88,13 @@ app.get('/api/events/:eventId', (request, response) ->
         error: 'Error obtaining event with id ' + request.params.eventId
     else
       response.json event
+
+app.get('/api/events/:eventId', (request, response) ->
+  getEvent request, response
+)
+
+app.get('/public/events/:eventId', (request, response) ->
+  getEvent request, response
 )
 
 app.options('/api/events/:eventId', (request, response) ->

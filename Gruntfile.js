@@ -102,7 +102,7 @@ module.exports = function (grunt) {
         copy : {
             target : {
                 files : [
-                    {expand: true, cwd: 'lib/client', src: ['*.html'], dest: 'target/client/'},
+                    {expand: true, cwd: 'lib/client', src: ['**'], dest: 'target/client/'},
                     {expand: true,
                         cwd: 'lib/webclient',
                         src: ['*.html', 'bootstrap-theme/**', 'css/**', 'img/**', 'js/**', 'lib/Ajax.js', 'lib/model/*.js', 'lib/Router.js'],
