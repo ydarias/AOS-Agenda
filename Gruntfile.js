@@ -22,7 +22,8 @@ module.exports = function (grunt) {
         preprocess : {
             development : {
                 files: {
-                    'build/webclient/lib/WeEvent.js': 'lib/webclient/lib/WeEvent.js'
+                    'build/webclient/lib/WeEvent.js': 'lib/webclient/lib/WeEvent.js',
+                    'build/client/js/app/app.js': 'lib/client/js/app/app.js'
                 },
                 options: {
                     context: {
@@ -32,7 +33,8 @@ module.exports = function (grunt) {
             },
             production : {
                 files: {
-                    'build/webclient/lib/WeEvent.js': 'lib/webclient/lib/WeEvent.js'
+                    'build/webclient/lib/WeEvent.js': 'lib/webclient/lib/WeEvent.js',
+                    'build/client/js/app/app.js': 'lib/client/js/app/app.js'
                 },
                 options: {
                     context: {
@@ -103,6 +105,7 @@ module.exports = function (grunt) {
             target : {
                 files : [
                     {expand: true, cwd: 'lib/client', src: ['**'], dest: 'target/client/'},
+                    {expand: true, cwd: 'build/client/js/app', src: ['**'], dest: 'target/client/js/app'},
                     {expand: true,
                         cwd: 'lib/webclient',
                         src: ['*.html', 'bootstrap-theme/**', 'css/**', 'img/**', 'js/**', 'lib/Ajax.js', 'lib/model/*.js', 'lib/Router.js'],
