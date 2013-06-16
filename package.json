@@ -1,25 +1,19 @@
 {
-  "name": "Weevent",
-  "author": "StartupWeekend",
-  "version": "0.0.1",
-  "dependencies": {
-    "grunt": "*",
-    "grunt-contrib-less": "*",
-    "grunt-contrib-copy": "*",
-    "grunt-contrib-handlebars": "*",
-    "grunt-contrib-coffee": "*"
-  },
-  "engine": {
-    "node": ">=0.4"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-clean": "~0.4.1",
-    "grunt-contrib-coffee": "~0.7.0",
-    "grunt-contrib-copy": "~0.4.1",
-    "grunt-contrib-less": "~0.5.2",
-    "grunt-contrib-handlebars": "~0.5.8",
-    "grunt-contrib-concat": "~0.3.0",
-    "grunt-preprocess": "~2.3.0"
-  }
+    "name": "Weevent",
+    "author": "StartupWeekend",
+    "version": "0.0.1",
+    "dependencies": {
+        "handlebars": "1.0.11",
+        "grunt": "0.4.x",
+        "grunt-contrib-clean": "0.4.x",
+        "grunt-contrib-coffee": "0.7.x",
+        "grunt-contrib-copy": "0.4.x",
+        "grunt-contrib-less": "0.5.x",
+        "grunt-contrib-handlebars": "0.5.x",
+        "grunt-contrib-concat": "0.3.x",
+        "grunt-preprocess": "2.3.x"
+    },
+    "engine": {
+        "node": ">=0.4"
+    }
 }
