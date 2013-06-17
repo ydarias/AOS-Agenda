@@ -114,6 +114,8 @@ app.post('/api/events/:eventId/sessions', (request, response) ->
     name: request.body.name
     description: request.body.description
     date: request.body.date
+    speaker: request.body.speaker
+    room: request.body.room
   schema.Event.findById(request.params.eventId).exec((error, event) ->
     if error
       response.status 400

@@ -4,6 +4,8 @@ mongoose.connect('localhost', 'weevent')
 sessionSchema = new mongoose.Schema
   name: 'String'
   description: 'String'
+  speaker: 'String'
+  room: 'String'
   date:
     type: 'Date'
 
