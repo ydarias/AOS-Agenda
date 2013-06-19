@@ -148,6 +148,27 @@ app.options('/api/events/:eventId/sessions', (request, response) ->
   response.end 'OK'
 )
 
+app.delete('/api/events/:eventId/sessions/:sessionId', (request, response) ->
+  query = schema.Event.findOne({'_id': request.params.eventId})
+  query.exec (error, event) ->
+    if error
+      response.status 400
+      response.json
+        error: '(Deleting session) Error obtaining session for event with id ' + request.params.eventId
+    else
+      session = event.sessions.id(request.params.sessionId)
+      if session then session.remove() else response.json 'OK'
+      event.save (error) ->
+        if error
+          response.json
+            error: 'Error deleting session!'
+        response.json 'OK'
+)
+
+app.options('/api/events/:eventId/sessions/:sessionId', (request, response) ->
+  response.end 'OK'
+)
+
 app.get('/api/events/:eventId/stats', (request, response) ->
   query = schema.Event.findOne({'_id': request.params.eventId})
   query.exec (error, event) ->

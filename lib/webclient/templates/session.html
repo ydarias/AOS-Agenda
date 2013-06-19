@@ -1,23 +1,42 @@
 <tr>
     <td>
-        <a href="#event/{{eventId}}/session/{{sessionId}}">
-            <div class="row-fluid">
-                <div class="span8">
-                    <h2>{{name}}</h2>
-                </div>
-                <div class="span4">
-                    <h2>{{dateTime date}}</h2>
-                </div>
+        <div class="row-fluid">
+            <div class="span8">
+                <h2>{{name}}</h2>
             </div>
-            <div>
-                Speaker: {{speaker}}
+            <div class="span3">
+                <h2>{{dateTime date}}</h2>
             </div>
-            <div>
-                Room: {{room}}
+            <div class="span1">
+                <a href="javascript:deleteSession_{{_id}}();" title="delete session">
+                    <i class="glyphicons-icon delete"></i>
+                </a>
+                <a id="link_{{eventId}}" href="#event/{{eventId}}/sessions"></a>
             </div>
-            <div>
-                {{description}}
-            </div>
-        </a>
+        </div>
+        <div>
+            Speaker: {{speaker}}
+        </div>
+        <div>
+            Room: {{room}}
+        </div>
+        <div>
+            {{description}}
+        </div>
     </td>
+    <script>
+        function callMeMaybe_() {
+
+        }
+
+        function deleteSession_{{_id}}() {
+            $.ajax({
+                type: "DELETE",
+                url: WeEvent.Configuration.baseURL + '/events/{{eventId}}/sessions/{{_id}}',
+                success: function() {
+                    $('#link_{{eventId}}').click();
+                }
+            });
+        }
+    </script>
 </tr>
